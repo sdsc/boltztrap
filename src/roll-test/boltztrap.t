@@ -22,7 +22,7 @@ SKIP: {
 
   skip 'boltztrap not installed', 4 if ! $isInstalled;
 
-  $output = `module load boltztrap; BoltzTrap 2>&1`;
+  $output = `module load boltztrap; BoltzTraP 2>&1`;
   like($output, qr/BoltzTraP vs 1.2.5/, 'boltztrap runs');
   `/bin/ls /opt/modulefiles/applications/boltztrap/[0-9]* 2>&1`;
   ok($? == 0, 'boltztrap module installed');
@@ -32,5 +32,3 @@ SKIP: {
      'boltztrap version module link created');
 
 }
-
-`rm -fr $TESTFILE*`;
