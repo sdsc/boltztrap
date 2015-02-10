@@ -72,7 +72,7 @@ DESCRIPTION:
 
 LICENSE: $(SRC_DIRS)
 	$(CHECK_LICENSE_FILES)
-	echo LICENSE > $@
+	echo GPL > $@
 
 build: $(SRC_DIRS)
 	patch $(SOURCE_DIR)/src/Makefile patch-files/Makefile.patch
