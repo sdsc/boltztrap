@@ -76,7 +76,7 @@ LICENSE: $(SRC_DIRS)
 
 build: $(SRC_DIRS)
 	patch $(SOURCE_DIR)/src/Makefile patch-files/Makefile.patch
-	perl -pi -e "s!ROLLINSTALL!$(PKGROOT)!g" $(SOURCE_DIR)/src/Makefile
+	perl -pi -e "s!ROLLINSTALL!$(ROOT)/$(PKGROOT)!g" $(SOURCE_DIR)/src/Makefile
 	@echo "::: Package $(NAME) build complete :::"
 	
 install::
