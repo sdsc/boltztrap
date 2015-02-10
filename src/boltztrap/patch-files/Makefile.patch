@@ -1,0 +1,40 @@
+--- boltztrap-1.2.5/src/Makefile	2013-11-20 06:21:57.000000000 -0800
++++ patch-files/Makefile	2015-02-09 21:14:01.000000000 -0800
+@@ -1,17 +1,21 @@
+ SHELL = /bin/sh
+ 
+ # gfortran
+-FC = gfortran
++FC = FORTRAN
+ #FC = gfortran-mp-4.5
+ 
+-FOPT  = -g -march=native -funroll-loops -O3 -ffast-math -fgcse-lm -fgcse-sm -ffast-math -ftree-vectorize -fexternal-blas
++FOPTGNU  =  -march=native -funroll-loops -O3 -ffast-math -fgcse-lm -fgcse-sm -ffast-math -ftree-vectorize -fexternal-blas
+ #FOPT += -g -p -pg -Wall -fbounds-check -finit-integer=-666 -finit-real=nan
+ #LDFLAGS =
+-LIBS = -llapack -lblas
++LIBS = -LMKL_ROOT -lmkl_rt
+ 
+ # ifort
+ #FC = ifort
+-#FOPT = -FR -mp1 -w -prec_div -pc80 -pad -ip -DINTEL_VML
++FOPTINTEL = -FR -mp1 -w -prec_div -pc80 -pad -ip -DINTEL_VML
++
++#pgi
++FOPTPGI = -fast
++
+ 
+ #LDFLAGS = -L/opt/intel/mkl/10.0.1.014/lib/32/ -Vaxlib -static-libcxa -pthread
+ #LIBS = -lmkl_lapack -lmkl_ia32 -lguide
+@@ -23,9 +27,9 @@
+ 
+ # generic
+ LINKER  =       $(FC)
+-LFLAGS  = -g #-pg
++#LDFLAGS  = -g #-pg
+ FGEN = 
+-DESTDIR = .
++DESTDIR = ROLLINSTALL/bin
+ 
+ EXECNAME = BoltzTraP
+ 
